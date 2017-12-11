@@ -1,0 +1,14 @@
+class StackNavigationRoot extends Component {
+    
+    // Set up navigation store subscription
+
+    render() {
+        if (this.state.navigationContext instanceof ContactListNavigationContext) {
+            return <ContactList {...this.state.navigationContext} />
+        }
+        
+        if (this.state.navigationContext instanceof MessageStreamNavigationContext) {
+            return <MessageStream {...this.state.navigationContext} />
+        }
+    }
+}

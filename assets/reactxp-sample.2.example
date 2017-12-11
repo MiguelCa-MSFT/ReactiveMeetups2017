@@ -1,0 +1,19 @@
+import RX, { Component, Styles, View } from 'reactxp';
+
+const styles = {
+    hello: Styles.createTextStyle({
+        fontSize: 24
+    }),
+};
+
+class App extends Component {
+    render() {
+        return (
+            <View>
+                <Text style={styles.hello}>
+                    Hello, World!
+                </Text>
+            </View>
+        )
+    }
+}

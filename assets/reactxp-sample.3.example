@@ -1,0 +1,33 @@
+import RX, { Animated, Component, Styles, View } from 'reactxp';
+
+// styles
+
+class App extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.opacityValue = new Animated.Value(0);
+        this.opacityAnimationStyle = Styles.createAnimatedTextStyle({
+            opacity: this.opacityValue
+        });
+    }
+
+    componentDidMount() {
+        Animated.timing(this.opacityValue, {
+            toValue: 1,
+            easing: RX.Animated.Easing.Out(),
+            duration: 150,
+        }).start();
+    }
+
+    render() {
+        return (
+            <View>
+                <Animated.Text style={[styles.hello, this.opacityAnimationStyle]}>
+                    Hello, World!
+                </Animated.Text>
+            </View>
+        )
+    }
+}

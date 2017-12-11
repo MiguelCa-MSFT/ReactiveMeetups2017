@@ -1,0 +1,25 @@
+import RX, { View } from 'reactxp';
+import { ComponentBase } from 'resub';
+
+import TodoStore from './TodoStore';
+
+export class TodoItem extends ComponentBase {
+    _buildState(props, initialBuild) {
+        return {
+            todo: TodoStore.getTodoById(props.itemId)
+        };
+    }
+
+    render() {
+        const {todo} = this.state.todo;
+        return (
+            <View>
+                <CompleteBox 
+                    onComplete={() => {TodoStore.completeTodo(todo.id)}} 
+                    completed={todo.completed} 
+                />
+                <Text>{todo.text}</Text>
+            </View>
+        )
+    }
+}

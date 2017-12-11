@@ -1,0 +1,24 @@
+class CompositNavigationRoot extends Component {
+    
+    // Set up navigation store subscription
+
+    renderMainArea() {
+        if (this.state.mainAreaNavigationContext instanceof CallNavigationContext) {
+            return <Call {...this.state.mainAreaNavigationContext} />
+        }
+        
+        if (this.state.mainAreaNavigationContext instanceof MessageStreamNavigationContext) {
+            return <MessageStream {...this.state.mainAreaNavigationContext} />
+        }
+    }
+
+    renderSidebar() {
+        if (this.state.sidebarNavigationContext instanceof ContactListNavigationContext) {
+            return <ContactList {...this.state.navigationContext} />
+        }
+        
+        if (this.state.sidebarNavigationContext instanceof SearchNavigationContext) {
+            return <MessageStream {...this.state.sidebarNavigationContext} />
+        }
+    }
+}

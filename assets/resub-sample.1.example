@@ -1,0 +1,21 @@
+import RX, { ScrollView } from 'reactxp';
+import { ComponentBase } from 'resub';
+
+import TodoStore from './TodoStore';
+import { TodoItem } from './TodoItem';
+
+class TodoList extends ComponentBase {
+    _buildState(props, initialBuild) {
+        return {
+            todos: TodoStore.getTodos()
+        };
+    }
+
+    render() {
+        return (
+            <ScrollView>
+                {this.state.todos.map(todoItemId => (<TodoItem itemId={todoItemId} />))}
+            </ScrollView>
+        )
+    }
+}

@@ -1,0 +1,20 @@
+const styles = {
+  container: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '3rem',
+  },
+};
+
+class Hello extends React.Component {
+  render() {
+    return (
+      <div style={styles.container}>
+        <div>Hello, {this.props.name}!</div>
+      </div>
+    );
+  }
+}
+
+render(<Hello name="#ReactiveMeetupsKE" />);

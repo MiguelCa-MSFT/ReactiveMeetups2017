@@ -1,0 +1,28 @@
+import { StoreBase, AutoSubscribeStore, autoSubscribe, key } from 'resub';
+
+@AutoSubscribeStore
+class TodosStore extends StoreBase {
+    _todos = [];
+
+    addTodo(todoText) {
+        // create new todo
+        this.trigger();
+    }
+
+    @autoSubscribe
+    getTodos() {
+        return this._todos;
+    }
+
+    completeTodo(todoId) {
+        // update todo
+        this.trigger(todoId);
+    }
+
+    @autoSubscribe
+    getTodo(@key id) {
+        // find and return todo        
+    }
+}
+
+export default new TodosStore();

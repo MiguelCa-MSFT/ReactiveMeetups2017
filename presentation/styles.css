@@ -1,0 +1,20 @@
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+li {
+    background: linear-gradient(90deg, rgb(22, 134, 217), rgb(143, 211, 197));
+    margin: 5px;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 80%;
+    color: white;
+    font-size: .95em !important;
+}
+
+li:nth-child(even) {
+    align-self: flex-end;
+    background: rgb(43, 44, 51);
+}

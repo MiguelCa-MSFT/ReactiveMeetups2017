@@ -1,0 +1,42 @@
+class BeerCount extends React.Component {
+  constructor() {
+    this.state = { beerCount: 1 };
+  }
+
+  componentDidMount() {
+    this.beerIncrementer = setInterval(() => {
+      this.setState({
+        beerCount: this.state.beerCount + 1,
+      });
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.beerIncrementer);
+  }
+
+  render() {
+    return (
+      <div style={styles.container}>
+        <div>
+          ME: How many bears should I have tonight?
+        </div>
+        <div>
+          ALSO ME: {this.state.beerCount}!
+        </div>
+      </div>
+    );
+  }
+}
+
+const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '2rem',
+  },
+};
+
+render(<BeerCount />);

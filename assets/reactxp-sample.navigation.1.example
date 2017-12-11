@@ -1,0 +1,16 @@
+import RX, { Component } from 'reactxp';
+
+import { StackNavigationRoot, CompositNavigationRoot } from './NavigatioRoot';
+
+class App extends Component {
+    
+    // Set up state from store
+
+    render() {
+        if (this.state.isUsingStackNavigation) {
+            return <StackNavigationRoot /> 
+        } else {
+            return <CompositNavigationRoot />
+        }
+    }
+}

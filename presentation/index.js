@@ -55,9 +55,7 @@ const images = {
   clients: require('../assets/clients.png'),
   architecture: require('../assets/architecture.png'),
   xp: require('../assets/xp.jpg'),
-  alex: require('../assets/alex.jpg'),
   responsivness: require('../assets/responsivness.png'),
-  hearth: require('../assets/hearth.png')
 };
 
 const style = {

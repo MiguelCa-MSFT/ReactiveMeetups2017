@@ -61,19 +61,32 @@ const images = {
 const style = {
   bubble: {
     blue: {
-      background: 'linear-gradient(90deg, rgb(22, 134, 217), rgb(143, 211, 197));',
+      backgroundColor: 'rgb(22, 134, 217)',
       borderRadius: 5,
       color: 'white',
       padding: 10,
-    },
+      margin: 10
+    }
   },
+  iframe: {
+    height: 700,
+    width: '100%',
+    border: 0,
+    overflow: 'hidden'
+  }
 };
 
-const Bubble = ({ textSize, children, withoutMargin }) => (
-  <Text textSize={textSize} style={style.bubble.blue} margin={!withoutMargin ? 10 : 0}>
-    {children}
-  </Text>
-);
+const Bubble = ({ textSize, children, backgroundColor }) => {
+  const backgrounStyle = backgroundColor
+    ? { backgroundColor: backgroundColor }
+    : {};
+
+  return (
+    <Text textSize={textSize} style={{ ...style.bubble.blue, ...backgrounStyle }}>
+      {children}
+    </Text>
+  );
+};
 
 export default class Presentation extends React.Component {
   render() {
@@ -83,19 +96,19 @@ export default class Presentation extends React.Component {
           <Layout style={{ flexDirection: 'column' }}>
             <Fill style={{ paddingBottom: '4.5em' }}>
               <Heading textColor="primary" textAlign="left">
-                Hello,
+                Refactoring
               </Heading>
               <Heading textColor="primary" textAlign="left">
-                I'm Peter
+                this.skype
               </Heading>
             </Fill>
 
             <Fit style={{ paddingBottom: '2em' }}>
               <Text textColor="primary" textAlign="left" textSize={'1.5rem'}>
-                Peter Lisy
+                Miguel Caballero Pinto
               </Text>
               <Text textColor="primary" textAlign="left" textSize={'1.5rem'}>
-                Software Engineer
+                Senior Software Engineer
               </Text>
               <Text textColor="primary" textAlign="left" textSize={'1.5rem'}>
                 Microsoft | Skype
@@ -106,12 +119,7 @@ export default class Presentation extends React.Component {
               <Layout>
                 <Fill>
                   <Text textColor="primary" textAlign="left" textSize={'1.5rem'}>
-                    Twitter: @PetoLisy
-                  </Text>
-                </Fill>
-                <Fill>
-                  <Text textColor="primary" textAlign="left" textSize={'1.5rem'}>
-                    Skype: peto.lisy
+                    Twitter: @MCaballeroPinto
                   </Text>
                 </Fill>
               </Layout>
@@ -119,40 +127,10 @@ export default class Presentation extends React.Component {
           </Layout>
         </Slide>
 
-        <Slide bgImage={images.sqiglyBg}>
-          <CodePane lang="jsx" source="// TODO: Ship new clients" textSize="3rem" />
-        </Slide>
-
-        <Slide bgColor="dark">
-          <BlockQuote>
-            <Quote>Everyone seems to hate the new Skype</Quote>
-            <Cite>Tom Warren | The Verge</Cite>
-          </BlockQuote>
-          <Notes>Ship we did. And everybody hated it.</Notes>
-        </Slide>
-
-        <Slide bgColor="dark">
-          <BlockQuote>
-            <Quote>I can tell you that it is not as bad as you would think</Quote>
-            <Cite>Brad Sams | thurrot.com</Cite>
-          </BlockQuote>
-          <Notes>Not all hope was lost though.</Notes>
-        </Slide>
-
-        <Slide bgColor="dark" textColor="primary">
-          <Heading>Plan for today</Heading>
-          <List>
-            <ListItem>Little history</ListItem>
-            <ListItem>Some React code</ListItem>
-            <ListItem>Skype front end tech stack</ListItem>
-            <ListItem>Some more React code</ListItem>
-          </List>
-        </Slide>
-
         <Slide>
-          <Heading>Little bit of history</Heading>
-          <Text>Skype - firts release 14 years ago</Text>
-          <Text>All major platforms - native clients</Text>
+          <Heading style={{ marginBottom: '1em' }}>Little bit of history</Heading>
+          <Text>Skype first releases 14 years ago</Text>
+          <Text>All platforms are native clients</Text>
           <Notes>
             First Skype client was released approximately 14 years ago. Since then skype was
             introduced to a number of platforms ranging from desktops, mobile phones, hololens, to
@@ -174,32 +152,8 @@ export default class Presentation extends React.Component {
           </Layout>
         </Slide>
 
-        <Slide bgColor="dark">
-          <ComponentPlayground
-            theme="light"
-            code={require('raw-loader!../assets/sample-react.example')}
-          />
-        </Slide>
-
-        <Slide bgColor="dark">
-          <ComponentPlayground
-            theme="light"
-            code={require('raw-loader!../assets/sample-react-state.example')}
-          />
-        </Slide>
-
-        <Slide bgColor="dark" textColor="priamry">
-          <Heading>React Native</Heading>
-          <List textColor="primary">
-            <ListItem>Use tools you know and love to build UIs using native components</ListItem>
-            <ListItem>Async rendering</ListItem>
-            <ListItem>Same knowledge applies. (mostly, but not enough)</ListItem>
-            <ListItem>NOT a mobile web app or HTML 5 app or hybrid app</ListItem>
-          </List>
-        </Slide>
-
         <Slide>
-          <Heading>Skype architecture</Heading>
+          <Heading textSize={ 40 }>Skype Client Architecture</Heading>
           <Image src={images.architecture} />
           <Notes>
             We decided to bet on one client codebase. Building UI bits in a cross platform way isn’t
@@ -213,6 +167,32 @@ export default class Presentation extends React.Component {
             indexdb and SQLite for data persistence. We have a way to bring in native modules with
             single interface so on app level we don’t have to make a difference.
           </Notes>
+        </Slide>
+
+        <Slide bgColor="dark" textColor="primary">
+          <Heading>React</Heading>
+          <List textColor="primary">
+            <ListItem>Component-Based</ListItem>
+            <ListItem>The Virtual DOM</ListItem>
+            <ListItem>JSX syntax</ListItem>
+          </List>
+        </Slide>
+
+        <Slide bgColor="dark">
+          <iframe src="https://codesandbox.io/embed/j1jzno4ly3?fontsize=12" style={ style.iframe} sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+        </Slide>
+
+        <Slide bgColor="dark" textColor="primary">
+          <Heading>React Native</Heading>
+          <List textColor="primary">
+            <ListItem>Same tools and frameworks</ListItem>
+            <ListItem>Same layout engine</ListItem>
+            <ListItem>A true native app</ListItem>
+          </List>
+        </Slide>
+
+        <Slide bgColor="dark" textColor="primary">
+          <iframe style={ style.iframe } src="https://snack.expo.io/H1D11bEHf" width="1000" height="700" />
         </Slide>
 
         <Slide bgImage={images.xp}>
@@ -230,6 +210,7 @@ export default class Presentation extends React.Component {
               </Fit>
             </Layout>
           </Heading>
+          <Text style={ { color: 'white' } }>https://github.com/Microsoft/reactxp</Text>
         </Slide>
 
         <Slide bgColor="dark">
@@ -240,66 +221,62 @@ export default class Presentation extends React.Component {
           </Layout>
           <Layout>
             <Fill>
-              <Bubble>React for Web</Bubble>
+              <Bubble textSize="2.5rem" backgroundColor={ "#3C9ED3" }>React for Web</Bubble>
             </Fill>
             <Fill>
-              <Bubble>React Native</Bubble>
-            </Fill>
-          </Layout>
-          <Layout>
-            <Fill>
-              <Bubble>Browser DOM</Bubble>
-            </Fill>
-            <Fill>
-              <Bubble>Native Views</Bubble>
+              <Bubble textSize="2.5rem" backgroundColor={ "#3C9ED3" }>React Native</Bubble>
             </Fill>
           </Layout>
           <Layout>
             <Fill>
-              <Layout>
-                <Fill>
-                  <Bubble textSize=".95rem">Web Browser</Bubble>
-                </Fill>
-                <Fill>
-                  <Bubble textSize=".95rem">Desktop - Electron</Bubble>
-                </Fill>
-              </Layout>
+              <Bubble textSize="2rem" backgroundColor={ "#4BA8D0" }>Browser DOM</Bubble>
             </Fill>
             <Fill>
-              <Layout>
-                <Fill>
-                  <Bubble textSize=".95rem">Web Browser</Bubble>
-                </Fill>
-                <Fill>
-                  <Bubble textSize=".95rem">Desktop - Electron</Bubble>
-                </Fill>
-              </Layout>
+              <Bubble textSize="2rem" backgroundColor={ "#4BA8D0" }>Native Views</Bubble>
             </Fill>
           </Layout>
           <Layout>
             <Fill>
               <Layout>
                 <Fill>
-                  <Bubble textSize=".9rem">Windows</Bubble>
+                  <Bubble textSize=".95rem" backgroundColor={ "#6BBCCB" }>Web Browser</Bubble>
                 </Fill>
                 <Fill>
-                  <Bubble textSize=".9rem">Mac</Bubble>
-                </Fill>
-                <Fill>
-                  <Bubble textSize=".9rem">Linux</Bubble>
+                  <Bubble textSize=".95rem" backgroundColor={ "#6BBCCB" }>Desktop - Electron</Bubble>
                 </Fill>
               </Layout>
             </Fill>
             <Fill>
               <Layout>
                 <Fill>
-                  <Bubble textSize=".9rem">iOS</Bubble>
+                  <Bubble textSize=".9rem" backgroundColor={ "#6BBCCB" }>iOS</Bubble>
                 </Fill>
                 <Fill>
-                  <Bubble textSize=".9rem">Android</Bubble>
+                  <Bubble textSize=".9rem" backgroundColor={ "#6BBCCB" }>Android</Bubble>
                 </Fill>
                 <Fill>
-                  <Bubble textSize=".9rem">Windows (UWP)(?)</Bubble>
+                  <Bubble textSize=".9rem" backgroundColor={ "#6BBCCB" }>UWP</Bubble>
+                </Fill>
+              </Layout>
+            </Fill>
+          </Layout>
+          <Layout>
+            <Fill>
+              <Layout>
+                <Fill>
+                  <Bubble textSize=".9rem" backgroundColor={ "rgb(143, 211, 197)" }>Windows</Bubble>
+                </Fill>
+                <Fill>
+                  <Bubble textSize=".9rem" backgroundColor={ "rgb(143, 211, 197)" }>Mac</Bubble>
+                </Fill>
+                <Fill>
+                  <Bubble textSize=".9rem" backgroundColor={ "rgb(143, 211, 197)" }>Linux</Bubble>
+                </Fill>
+              </Layout>
+            </Fill>
+            <Fill>
+              <Layout>
+                <Fill>
                 </Fill>
               </Layout>
             </Fill>
@@ -307,13 +284,10 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide bgColor="dark">
-          <CodePane lang="jsx" theme="light" source={require('raw-loader!../assets/reactxp-sample.1.example')} />
+          <iframe style={ style.iframe } src="https://codesandbox.io/embed/6j25y256yn?fontsize=12" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
         </Slide>
         <Slide bgColor="dark">
-          <CodePane lang="jsx" theme="light" source={require('raw-loader!../assets/reactxp-sample.2.example')} />
-        </Slide>
-        <Slide bgColor="dark">
-          <CodePane lang="jsx" theme="light" source={require('raw-loader!../assets/reactxp-sample.3.example')} />
+          <iframe style={ style.iframe } src="https://codesandbox.io/embed/rrr26ovlv4?fontsize=12" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
         </Slide>
 
         <Slide>
@@ -322,32 +296,10 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide bgColor="dark">
-          <CodePane
-            lang="jsx"
-            theme="light"
-            source={require('raw-loader!../assets/reactxp-sample.navigation.1.example')}
-          />
-        </Slide>
-        <Slide bgColor="dark">
-          <CodePane
-            lang="jsx"
-            theme="light"
-            source={require('raw-loader!../assets/reactxp-sample.navigation.2.example')}
-          />
-        </Slide>
-        <Slide bgColor="dark">
-          <CodePane
-            lang="jsx"
-            theme="light"
-            source={require('raw-loader!../assets/reactxp-sample.navigation.3.example')}
-          />
-        </Slide>
-
-        <Slide>
           <Heading textSize={'2em'}>ReactXP Extensions</Heading>
 
           <List>
-            <ListItem>Way to bring in platform specific modules and native code</ListItem>
+            <ListItem>A way to bring in platform specific modules and native code</ListItem>
             <ListItem>
               20+ built at skype, some already open source (VirtualListView, Video, …)
             </ListItem>
@@ -355,41 +307,33 @@ export default class Presentation extends React.Component {
           </List>
         </Slide>
 
-        <Slide>
+        <Slide bgColor="dark">
           <Heading textSize={'2em'}>ReactXP Limitations</Heading>
 
           <List>
-            <ListItem>Interactive components – Sync rendering</ListItem>
-            <ListItem>Native like start up times</ListItem>
+            <ListItem>Asynchronous rendering bring issues in specific scenarios like list views</ListItem>
+            <ListItem>Slow startup times</ListItem>
             <ListItem>Share extension and other low memory scenarios</ListItem>
-            <ListItem>Accessibility APIs (existing, but have limitations)</ListItem>
+            <ListItem>Accessibility APIs are limited</ListItem>
           </List>
         </Slide>
 
-        <Slide>
+        <Slide bgColor="dark">
           <Heading textSize={'2em'}>ReSub</Heading>
-
+          <Text style={ { color: 'white' } }>https://github.com/Microsoft/ReSub</Text>
           <List>
-            <ListItem>Re(act)Sub(scriptions)</ListItem>
+            <ListItem>Re(act) Sub(scriptions)</ListItem>
             <ListItem>State management library</ListItem>
             <ListItem>Open source library</ListItem>
           </List>
         </Slide>
 
         <Slide bgColor="dark">
-          <CodePane lang="jsx" theme="light" source={require('raw-loader!../assets/resub-sample.1.example')} />
+          <iframe src="https://codesandbox.io/embed/4xo5yk5mm0?fontsize=12&hidenavigation=1" style={ style.iframe } sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
         </Slide>
 
         <Slide bgColor="dark">
-          <CodePane lang="jsx" theme="light" source={require('raw-loader!../assets/resub-sample.2.example')} />
-        </Slide>
-
-        <Slide bgColor="dark">
-          <CodePane lang="jsx" theme="light" source={require('raw-loader!../assets/resub-sample.3.example')} />
-        </Slide>
-
-        <Slide>
-          <Heading>Where are we?</Heading>
+          <Heading textSize={'2em'}>Where are we?</Heading>
           <List>
             <ListItem>We ship every 2 weeks across all platforms</ListItem>
             <ListItem>More than 90% of our code is shared</ListItem>

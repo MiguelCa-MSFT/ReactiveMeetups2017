@@ -19,7 +19,7 @@ class BeerCount extends React.Component {
     return (
       <div style={styles.container}>
         <div>
-          ME: How many bears should I have tonight?
+          ME: How many beers should I have tonight?
         </div>
         <div>
           ALSO ME: {this.state.beerCount}!

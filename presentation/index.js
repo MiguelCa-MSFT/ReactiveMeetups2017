@@ -96,10 +96,13 @@ export default class Presentation extends React.Component {
           <Layout style={{ flexDirection: 'column' }}>
             <Fill style={{ paddingBottom: '4.5em' }}>
               <Heading textColor="primary" textAlign="left">
-                Refactoring
+                Refactor(
+              </Heading>
+              <Heading textColor="primary" textAlign="left" style={ { whiteSpace: "pre-wrap" } }>
+                { "   this.skype" }
               </Heading>
               <Heading textColor="primary" textAlign="left">
-                this.skype
+                )
               </Heading>
             </Fill>
 
@@ -111,7 +114,7 @@ export default class Presentation extends React.Component {
                 Senior Software Engineer
               </Text>
               <Text textColor="primary" textAlign="left" textSize={'1.5rem'}>
-                Microsoft | Skype
+              Skype | Microsoft
               </Text>
             </Fit>
 
@@ -285,9 +288,6 @@ export default class Presentation extends React.Component {
 
         <Slide bgColor="dark">
           <iframe style={ style.iframe } src="https://codesandbox.io/embed/6j25y256yn?fontsize=12" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
-        </Slide>
-        <Slide bgColor="dark">
-          <iframe style={ style.iframe } src="https://codesandbox.io/embed/rrr26ovlv4?fontsize=12" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
         </Slide>
 
         <Slide>

@@ -95,14 +95,11 @@ export default class Presentation extends React.Component {
         <Slide transition={['fade']} bgColor="skype">
           <Layout style={{ flexDirection: 'column' }}>
             <Fill style={{ paddingBottom: '4.5em' }}>
-              <Heading textColor="primary" textAlign="left">
-                Refactor(
+              <Heading textColor="primary" textAlign="left" style={ { lineHeight: '2em' } }>
+                Hi! 
               </Heading>
               <Heading textColor="primary" textAlign="left" style={ { whiteSpace: "pre-wrap" } }>
-                { "   this.skype" }
-              </Heading>
-              <Heading textColor="primary" textAlign="left">
-                )
+              I'm Miguel. 😋
               </Heading>
             </Fill>
 
@@ -131,19 +128,16 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide>
-          <Heading style={{ marginBottom: '1em' }}>Little bit of history</Heading>
-          <Text>Skype first releases 14 years ago</Text>
-          <Text>All platforms are native clients</Text>
-          <Notes>
-            First Skype client was released approximately 14 years ago. Since then skype was
-            introduced to a number of platforms ranging from desktops, mobile phones, hololens, to
-            TVs and cars. To achieve the best user experience, each of these clients was built using
-            native tools – Objective C, Java, Delphi, C#, JavaScript and more. Now imagine all these
-            teams trying to ship a consistent feature set across all the platforms at roughly the
-            same time. Each of them having their own backlog, bugs and features they’d like to give
-            to their users, their own release cycle. Shipping one feature across all the clients at
-            the same time proved to be challenging to say the least.
-          </Notes>
+          <Heading style={{ marginBottom: '1em' }}>Skype</Heading>
+          <Text style={{ marginBottom: '0.5em' }}>14 years old</Text>
+          <Text style={{ marginBottom: '0.5em' }}>Recognized as a verb</Text>
+          <Text style={{ marginBottom: '0.5em' }}>+1bn downloads in Android</Text>
+        </Slide>
+
+        <Slide bgColor="dark">
+          <Heading style={{ marginBottom: '1em' }}>Reality</Heading>
+          <Text style={{ color: 'white', marginBottom: '0.5em' }}>Slow innovation</Text>
+          <Text style={{ color: 'white', marginBottom: '0.5em' }}>Value proposition didn't evolve</Text>
         </Slide>
 
         <Slide>
@@ -155,47 +149,24 @@ export default class Presentation extends React.Component {
           </Layout>
         </Slide>
 
-        <Slide>
-          <Heading textSize={ 40 }>Skype Client Architecture</Heading>
-          <Image src={images.architecture} />
-          <Notes>
-            We decided to bet on one client codebase. Building UI bits in a cross platform way isn’t
-            enough. You need a way to access data, communicate with external world, your device
-            sensors, network, data persistence with different features provided by native options on
-            each platform. We’ve built libraries for most of those tasks. We’ve build a library to
-            deal with UI in a cross platform way. We have stores built using ReSub for in memory
-            state management. We have modules we call services that are responsibe for talking with
-            the outside world regardless of whether it’s sensors, time, microservices. We have a
-            Simple REST client library for network communication and a nosql abstraction over
-            indexdb and SQLite for data persistence. We have a way to bring in native modules with
-            single interface so on app level we don’t have to make a difference.
-          </Notes>
-        </Slide>
-
-        <Slide bgColor="dark" textColor="primary">
-          <Heading>React</Heading>
-          <List textColor="primary">
-            <ListItem>Component-Based</ListItem>
-            <ListItem>The Virtual DOM</ListItem>
-            <ListItem>JSX syntax</ListItem>
-          </List>
+        <Slide bgColor="dark">
+          <BlockQuote>
+            <Quote>Everyone seems to hate the new Skype</Quote>
+            <Cite>Tom Warren | The Verge</Cite>
+          </BlockQuote>
         </Slide>
 
         <Slide bgColor="dark">
-          <iframe src="https://codesandbox.io/embed/j1jzno4ly3?fontsize=12" style={ style.iframe} sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+          <Heading style={{ marginBottom: '1em' }}>React to feedback quickly</Heading>
+          <Text style={ { color: 'white', marginBottom: '0.6em' } }>From 1 to 4 🌟 </Text>
+          <Text style={ { color: 'white' } }>Featured in Google Play again</Text>
         </Slide>
 
-        <Slide bgColor="dark" textColor="primary">
-          <Heading>React Native</Heading>
-          <List textColor="primary">
-            <ListItem>Same tools and frameworks</ListItem>
-            <ListItem>Same layout engine</ListItem>
-            <ListItem>A true native app</ListItem>
-          </List>
-        </Slide>
-
-        <Slide bgColor="dark" textColor="primary">
-          <iframe style={ style.iframe } src="https://snack.expo.io/H1D11bEHf" width="1000" height="700" />
+        <Slide bgColor="dark">
+          <BlockQuote>
+            <Quote>I can tell you that it is not as bad as you would think</Quote>
+            <Cite>Brad Sams | thurrot.com</Cite>
+          </BlockQuote>
         </Slide>
 
         <Slide bgImage={images.xp}>
@@ -287,66 +258,36 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide bgColor="dark">
-          <iframe style={ style.iframe } src="https://codesandbox.io/embed/6j25y256yn?fontsize=12" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
-        </Slide>
-
-        <Slide>
-          <Text>The app runs on a variety of devices</Text>
-          <Image src={images.responsivness} />
+          <Heading textSize={'2em'}>Team organization</Heading>
+          <Text style={{ color: 'white', marginTop: '0.5em' }}>From platform based to customer value based.</Text>
         </Slide>
 
         <Slide bgColor="dark">
-          <Heading textSize={'2em'}>ReactXP Extensions</Heading>
+          <Heading textSize={'2em'}>Challenges</Heading>
 
           <List>
-            <ListItem>A way to bring in platform specific modules and native code</ListItem>
-            <ListItem>
-              20+ built at skype, some already open source (VirtualListView, Video, …)
-            </ListItem>
-            <ListItem>Need to keep the same interface across platforms</ListItem>
-          </List>
-        </Slide>
-
-        <Slide bgColor="dark">
-          <Heading textSize={'2em'}>ReactXP Limitations</Heading>
-
-          <List>
-            <ListItem>Asynchronous rendering bring issues in specific scenarios like list views</ListItem>
-            <ListItem>Slow startup times</ListItem>
-            <ListItem>Share extension and other low memory scenarios</ListItem>
+            <ListItem>Changing our developers stack</ListItem>
+            <ListItem>Performance, specially at startup.</ListItem>
+            <ListItem>Betting on a inmature platform.</ListItem>
             <ListItem>Accessibility APIs are limited</ListItem>
           </List>
-        </Slide>
-
-        <Slide bgColor="dark">
-          <Heading textSize={'2em'}>ReSub</Heading>
-          <Text style={ { color: 'white' } }>https://github.com/Microsoft/ReSub</Text>
-          <List>
-            <ListItem>Re(act) Sub(scriptions)</ListItem>
-            <ListItem>State management library</ListItem>
-            <ListItem>Open source library</ListItem>
-          </List>
-        </Slide>
-
-        <Slide bgColor="dark">
-          <iframe src="https://codesandbox.io/embed/4xo5yk5mm0?fontsize=12&hidenavigation=1" style={ style.iframe } sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
         </Slide>
 
         <Slide bgColor="dark">
           <Heading textSize={'2em'}>Where are we?</Heading>
           <List>
             <ListItem>We ship every 2 weeks across all platforms</ListItem>
-            <ListItem>More than 90% of our code is shared</ListItem>
+            <ListItem>More than 90% of our code is shared.</ListItem>
             <ListItem>We respond to feedback from users at a much faster pace</ListItem>
             <ListItem>
-              We have many more great things to ship and feel much more agile/faster with ReactXP in
-              place.
+              We are able to innovate and experiment faster.
             </ListItem>
           </List>
         </Slide>
 
         <Slide>
           <Heading>Thank you!</Heading>
+          <Text style={ { marginTop: '20px' } }>{ 'Questions?' }</Text>
         </Slide>
       </Deck>
     );

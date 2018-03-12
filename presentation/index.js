@@ -56,6 +56,8 @@ const images = {
   architecture: require('../assets/architecture.png'),
   xp: require('../assets/xp.jpg'),
   responsivness: require('../assets/responsivness.png'),
+  tRex: require('../assets/trex.jpg'),
+  tRexMS: require('../assets/trexms.jpg')
 };
 
 const style = {
@@ -125,6 +127,14 @@ export default class Presentation extends React.Component {
               </Layout>
             </Fit>
           </Layout>
+        </Slide>
+
+        <Slide bgColor="black">
+          <Image style={ { maxWidth: 1000, maxHeight: 700 } } src={images.tRexMS} />
+        </Slide>
+
+        <Slide bgColor="black">
+          <Image style={ { maxWidth: 1000, maxHeight: 700 } } src={images.tRex} />
         </Slide>
 
         <Slide>

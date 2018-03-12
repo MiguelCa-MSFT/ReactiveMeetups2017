@@ -139,13 +139,13 @@ export default class Presentation extends React.Component {
 
         <Slide>
           <Heading style={{ marginBottom: '1em' }}>Skype</Heading>
-          <Text style={{ marginBottom: '0.5em' }}>14 years old</Text>
           <Text style={{ marginBottom: '0.5em' }}>Recognized as a verb</Text>
           <Text style={{ marginBottom: '0.5em' }}>+1bn downloads in Android</Text>
         </Slide>
 
         <Slide bgColor="dark">
           <Heading style={{ marginBottom: '1em' }}>Reality</Heading>
+          <Text style={{ color: 'white', marginBottom: '0.5em' }}>14 years old</Text>
           <Text style={{ color: 'white', marginBottom: '0.5em' }}>Slow innovation</Text>
           <Text style={{ color: 'white', marginBottom: '0.5em' }}>Value proposition didn't evolve</Text>
         </Slide>
